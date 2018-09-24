@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="bloodGrp_Array">
+        <item>Blood Group</item>
+        <item>O-positive</item>
+        <item>O-negative</item>
+        <item>A-positive</item>
+        <item>A-negative</item>
+        <item>B-positive</item>
+        <item>B-negative</item>
+        <item>AB-positive</item>
+        <item>AB-negative</item>
+    </string-array>
+</resources>
