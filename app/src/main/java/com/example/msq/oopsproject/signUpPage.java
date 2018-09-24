@@ -22,9 +22,9 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+
+import java.util.Objects;
 
 import static android.text.TextUtils.isEmpty;
 
@@ -49,13 +49,11 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
 
     private FirebaseAuth firebaseAuth;
 
-    private DatabaseReference databaseReference;
-
-    public boolean isValidEmail(CharSequence target) {
+    private boolean isValidEmail(CharSequence target) {
         return (!isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
     }
 
-    public boolean credentialsValid() {
+    private boolean credentialsValid() {
 
         if (fName.getText().toString().trim().isEmpty() || lName.getText().toString().trim().isEmpty() || newEmailId.getText().toString().trim().isEmpty() ||
                 mobile.getText().toString().trim().isEmpty() || pass.getText().toString().trim().isEmpty() || newPass.getText().toString().trim().isEmpty()) {
@@ -95,8 +93,6 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
         setContentView(R.layout.activity_sign_up_page);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        databaseReference = FirebaseDatabase.getInstance().getReference();
 
         progressDialog = new ProgressDialog(this);
 
@@ -156,6 +152,17 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(firebaseAuth.getCurrentUser() != null){
+            finish();
+            Intent intent = new Intent(signUpPage.this, loginPage.class);
+            signUpPage.this.startActivity(intent);
+        }
+    }
+
     public void onClick(View view){
         switch(view.getId()){
             case R.id.CPR_check:
@@ -172,23 +179,6 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    private void saveUserInfo(){
-
-        String firstName = fName.getText().toString().trim();
-        String lastName = lName.getText().toString().trim();
-        long phNo = Integer.parseInt(mobile.getText().toString().trim());
-
-
-        userData userData = new userData(firstName, lastName, phNo, gender, bloodGrp, knowCPR);
-
-        FirebaseUser user = firebaseAuth.getCurrentUser();
-
-        if (user != null) {
-            databaseReference.child(user.getUid()).setValue(userData);
-        }
-
-    }
-
     private void registerUser(){
 
         String password = pass.getText().toString().trim();
@@ -198,21 +188,39 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
         progressDialog.show();
 
         firebaseAuth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
                             progressDialog.dismiss();
-                            Toast.makeText(signUpPage.this, "Registration Successful !", Toast.LENGTH_SHORT).show();
-                            saveUserInfo();
+
+                            String firstName = fName.getText().toString().trim();
+                            String lastName = lName.getText().toString().trim();
+                            long phNo = Integer.parseInt(mobile.getText().toString().trim());
+
+                            userData userData = new userData(firstName, lastName, phNo, gender, bloodGrp, knowCPR);
+
+                            FirebaseDatabase.getInstance().getReference("userData")
+                                    .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
+                                    .setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if(task.isSuccessful())
+                                        Toast.makeText(signUpPage.this, "Registration Successful !", Toast.LENGTH_SHORT).show();
+                                    else{
+                                        progressDialog.dismiss();
+                                        Toast.makeText(signUpPage.this, "Registration Failed, Please try again !" , Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            });
                             finish();
-                            Intent intent = new Intent(signUpPage.this, loginPage.class);
+                            Intent intent = new Intent(signUpPage.this, homePage.class);
                             signUpPage.this.startActivity(intent);
-                            Toast.makeText(signUpPage.this, "Log in now !", Toast.LENGTH_SHORT).show();
                         }
                         else{
                             progressDialog.dismiss();
-                            Toast.makeText(signUpPage.this, "Registration Failed, Please try again !", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(signUpPage.this, "Registration Failed, Please try again !" , Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

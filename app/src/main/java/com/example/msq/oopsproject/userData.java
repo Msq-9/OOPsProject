@@ -17,4 +17,52 @@ public class userData {
         this.bloodGroup = bloodGroup;
         this.knowCPR = knowCPR;
     }
+
+    public String getfName() {
+        return fName;
+    }
+
+    public String getlName() {
+        return lName;
+    }
+
+    public long getMobileNum() {
+        return mobileNum;
+    }
+
+    public String getSex() {
+        return sex;
+    }
+
+    public String getBloodGroup() {
+        return bloodGroup;
+    }
+
+    public boolean isKnowCPR() {
+        return knowCPR;
+    }
+
+    public void setfName(String fName) {
+        this.fName = fName;
+    }
+
+    public void setlName(String lName) {
+        this.lName = lName;
+    }
+
+    public void setMobileNum(long mobileNum) {
+        this.mobileNum = mobileNum;
+    }
+
+    public void setSex(String sex) {
+        this.sex = sex;
+    }
+
+    public void setBloodGroup(String bloodGroup) {
+        this.bloodGroup = bloodGroup;
+    }
+
+    public void setKnowCPR(boolean knowCPR) {
+        this.knowCPR = knowCPR;
+    }
 }

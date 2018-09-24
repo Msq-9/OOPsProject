@@ -57,6 +57,17 @@ public class loginPage extends AppCompatActivity {
     }
 
     @Override
+    protected void onStart() {
+        super.onStart();
+
+        if(firebaseAuth.getCurrentUser() != null){
+            finish();
+            Intent intent = new Intent(loginPage.this, homePage.class);
+            loginPage.this.startActivity(intent);
+        }
+    }
+
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
@@ -70,12 +81,6 @@ public class loginPage extends AppCompatActivity {
         progressDialog = new ProgressDialog(this);
 
         firebaseAuth = FirebaseAuth.getInstance();
-
-        if(firebaseAuth.getCurrentUser() != null){
-            finish();
-            Intent intent = new Intent(loginPage.this, homePage.class);
-            loginPage.this.startActivity(intent);
-        }
 
         signUpPage.setOnClickListener(
                 new TextView.OnClickListener(){
