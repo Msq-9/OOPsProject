@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#03d1bb"
+    android:background="@drawable/bg_log_in"
     tools:context=".loginPage">
 
     <ImageView
@@ -15,24 +15,22 @@
         android:contentDescription="@string/logo"
         android:src="@drawable/logo" />
 
-    <ImageView
-        android:layout_width="350dp"
-        android:layout_height="205dp"
-        android:layout_below="@+id/logo"
-        android:layout_centerHorizontal="true"
-        android:contentDescription="@string/login_back_card"
-        android:src="@drawable/details_back" />
+
 
     <TableLayout
         android:id="@+id/log_in_input"
         android:layout_width="300dp"
         android:layout_height="90dp"
         android:layout_below="@id/logo"
+
         android:layout_centerHorizontal="true"
         android:layout_marginTop="15dp">
 
         <EditText
             android:id="@+id/emailId"
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
             android:layout_width="250dp"
             android:layout_height="40dp"
             android:hint="@string/email_id"
@@ -43,6 +41,10 @@
             android:id="@+id/password"
             android:layout_width="250dp"
             android:layout_height="40dp"
+
+            android:textColor="#ffffff"
+            android:textColorHint="#ffffff"
+            android:backgroundTint="#ffffff"
             android:hint="@string/password"
             android:inputType="textWebPassword"
             android:textAlignment="center" />
@@ -93,6 +95,9 @@
             android:layout_height="wrap_content"
             android:text="@string/not_registered"
             android:textSize="15sp"
+
+            android:textColor="#ffffff"
+
             android:layout_marginEnd="5dp"/>
 
         <TextView
