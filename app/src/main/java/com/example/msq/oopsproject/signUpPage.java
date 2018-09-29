@@ -20,8 +20,12 @@ import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseException;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.DatabaseException;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.Objects;
@@ -96,8 +100,8 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
 
         progressDialog = new ProgressDialog(this);
 
-        final Spinner genderSpinner = findViewById(R.id.gender);
-        final Spinner bloodGrpSpinner = findViewById(R.id.bloodGrp);
+        Spinner genderSpinner = findViewById(R.id.gender);
+        Spinner bloodGrpSpinner = findViewById(R.id.bloodGrp);
 
         ArrayAdapter<CharSequence> genderAdapter = ArrayAdapter.createFromResource(this, R.array.gender_Array, android.R.layout.simple_spinner_item);
         ArrayAdapter<CharSequence> bloodGrpAdapter = ArrayAdapter.createFromResource(this, R.array.bloodGrp_Array, android.R.layout.simple_spinner_item);
@@ -112,6 +116,8 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 if (pos == 0)
                     ((TextView) parent.getChildAt(0)).setTextColor(Color.GRAY);
+                gender = parent.getSelectedItem().toString();
+
             }
 
             @Override
@@ -125,6 +131,8 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
             public void onItemSelected(AdapterView<?> parent, View view, int pos, long id) {
                 if (pos == 0)
                     ((TextView) parent.getChildAt(0)).setTextColor(Color.GRAY);
+                bloodGrp = parent.getSelectedItem().toString();
+
             }
 
             @Override
@@ -139,8 +147,6 @@ public class signUpPage extends AppCompatActivity implements View.OnClickListene
         mobile = findViewById(R.id.mobileNo);
         pass = findViewById(R.id.newPass);
         newPass = findViewById(R.id.newPassConfirm);
-        gender = genderSpinner.getSelectedItem().toString();
-        bloodGrp = bloodGrpSpinner.getSelectedItem().toString();
         CPRCheckbox = findViewById(R.id.CPR_check);
         TermsAndCondCheckbox = findViewById(R.id.TermsAndConditions);
         Button signUp = findViewById(R.id.signUpButton);
