@@ -16,7 +16,7 @@
     <string name="logo">logo</string>
     <string name="login_back_card">login_back_card</string>
     <string name="not_registered">Not Registered ?</string>
-    <string name="sign_up">Sign Up !</string>
+    <string name="sign_up">Sign Up</string>
     <string name="submit">Submit</string>
     <string name="first_name">First Name</string>
     <string name="last_name">Last Name</string>
@@ -27,4 +27,11 @@
     <string name="knowCPR">Check this box If You Know how to give CPR.</string>
     <string name="T_and_C">I Agree To the Terms and Conditions.</string>
     <string name="signupback">signUpBack</string>
+
+    <string name="Open">Open</string>
+    <string name="Close">Close</string>
+    <string name="profile_pic">profile_pic</string>
+    <string name="my_profile">My Profile</string>
+    <string name="settings">Settings</string>
+    <string name="log_out">Log out</string>
 </resources>

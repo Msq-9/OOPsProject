@@ -86,6 +86,7 @@ public class loginPage extends AppCompatActivity {
                 new TextView.OnClickListener(){
                     @Override
                     public void onClick(View view) {
+                        finish();
                         Intent intent = new Intent(loginPage.this, signUpPage.class);
                         loginPage.this.startActivity(intent);
                     }

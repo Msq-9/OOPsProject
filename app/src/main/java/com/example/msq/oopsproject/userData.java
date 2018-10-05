@@ -6,16 +6,22 @@ public class userData {
     public String lName;
     public long mobileNum;
     public String sex;
+    public String e_mail;
     public String bloodGroup;
     public boolean knowCPR;
 
-    public userData(String fName, String lName, long mobileNum, String sex, String bloodGroup, boolean knowCPR) {
+    public userData() {
+
+    }
+
+    public userData(String fName, String lName, long mobileNum, String sex, String e_mail, String bloodGroup, boolean knowCPR) {
         this.fName = fName;
         this.lName = lName;
         this.mobileNum = mobileNum;
         this.sex = sex;
         this.bloodGroup = bloodGroup;
         this.knowCPR = knowCPR;
+        this.e_mail = e_mail;
     }
 
     public String getfName() {
@@ -56,6 +62,14 @@ public class userData {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public String getE_mail() {
+        return e_mail;
+    }
+
+    public void setE_mail(String e_mail) {
+        this.e_mail = e_mail;
     }
 
     public void setBloodGroup(String bloodGroup) {
