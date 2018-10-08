@@ -8,30 +8,14 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     tools:context=".homePage">
-<!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Log Out"
-            android:textSize="20sp"
-            android:layout_gravity="center"
-            android:textAlignment="center"/>
-        
-    </LinearLayout>
-
-    -->
 
     <android.support.design.widget.NavigationView
+        app:headerLayout="@layout/navigation_header"
         android:id="@+id/navigation_view"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         app:menu="@menu/navigation_menu"
         android:layout_gravity="start">
-
 
 
     </android.support.design.widget.NavigationView>

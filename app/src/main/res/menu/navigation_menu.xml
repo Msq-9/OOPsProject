@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/nav_account"
-        android:title="Account" />
+    <item
+        android:id="@+id/nav_account"
+        android:icon="@drawable/account"
+        android:title="@string/my_profile" />
 
-    <item android:id="@+id/nav_settings"
-        android:title="Settings" />
+    <item
+        android:id="@+id/nav_settings"
+        android:icon="@drawable/settings24dp"
+        android:title="@string/settings" />
 
-    <item android:id="@+id/nav_logout"
-        android:title="Log out" />
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@drawable/logout"
+        android:title="@string/log_out" />
 
 </menu>
