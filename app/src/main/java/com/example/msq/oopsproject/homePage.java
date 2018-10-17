@@ -8,6 +8,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -19,7 +21,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class homePage extends AppCompatActivity {
+public class homePage extends AppCompatActivity implements View.OnClickListener {
 
     private NavigationView navigationView;
     private FirebaseAuth firebaseAuth;
@@ -31,6 +33,7 @@ public class homePage extends AppCompatActivity {
 
     private ImageView header_profilePic;
     private TextView header_name, header_email;
+    private Button makeRequest;
 
     private DrawerLayout mDrawerLayout;
     private ActionBarDrawerToggle mToggle;
@@ -39,6 +42,8 @@ public class homePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
+        makeRequest = (Button)findViewById(R.id.makeRequest);
+        makeRequest.setOnClickListener(this);
 
         mDrawerLayout = findViewById(R.id.drawer_layout);
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.Open, R.string.Close);
@@ -126,5 +131,23 @@ public class homePage extends AppCompatActivity {
         if(mToggle.onOptionsItemSelected(item))
             return true;
         return super.onOptionsItemSelected(item);
+    }
+
+    public void onClick(View view)
+    {
+        switch(view.getId())
+        {
+            case(R.id.makeRequest): {
+                finish();
+                startActivity(new Intent(homePage.this, req.class));
+            }
+        }
+
+
+    }
+
+    @Override
+    public void onPointerCaptureChanged(boolean hasCapture) {
+
     }
 }
