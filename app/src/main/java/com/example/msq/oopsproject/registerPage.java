@@ -142,14 +142,18 @@ public class registerPage extends AppCompatActivity implements View.OnClickListe
                 knowCPR = CPRCheckbox.isChecked();
                 break;
             case R.id.submitProfile:
-                if(credentialsValid()) {
-                    safeProfile();
+                if(credentialsValid() && !gender.equals("Gender") && !bloodGrp.equals("Blood Group")) {
+                    saveProfile();
                 }
+                else if(gender.equals("Gender"))
+                    Toast.makeText(this, "Select gender !", Toast.LENGTH_SHORT).show();
+                else if(bloodGrp.equals("Blood Group"))
+                    Toast.makeText(this, "Select Blood Group !", Toast.LENGTH_SHORT).show();
                 break;
         }
     }
 
-    private void safeProfile(){
+    private void saveProfile(){
 
         final String email = newEmailId.getText().toString().trim();
 
@@ -162,14 +166,14 @@ public class registerPage extends AppCompatActivity implements View.OnClickListe
 
         long phNo = Long.parseLong((mobile.getText().toString().trim()));
 
-        userData userData = new userData(firstName, lastName, phNo, gender, email, bloodGrp, knowCPR);
+        userData uData = new userData(firstName, lastName, phNo, gender, email, bloodGrp, knowCPR);
 
         progressDialog.setMessage("Registering User, Please wait...");
         progressDialog.show();
 
         FirebaseDatabase.getInstance().getReference("userData")
                 .child(Objects.requireNonNull(FirebaseAuth.getInstance().getCurrentUser()).getUid())
-                .setValue(userData).addOnCompleteListener(new OnCompleteListener<Void>() {
+                .setValue(uData).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
 
@@ -183,6 +187,7 @@ public class registerPage extends AppCompatActivity implements View.OnClickListe
                     }
                     else{
                             Toast.makeText(registerPage.this, "Failed to Update Profile, Please try again !" , Toast.LENGTH_SHORT).show();
+                            //delete current user
                             progressDialog.dismiss();
                         }
                     }

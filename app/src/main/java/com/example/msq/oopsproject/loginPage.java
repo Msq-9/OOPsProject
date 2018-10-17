@@ -35,7 +35,7 @@ public class loginPage extends AppCompatActivity {
         String email = emailId.getText().toString().trim();
         String pass = password.getText().toString().trim();
 
-        progressDialog.setMessage("Signing Up, Please wait...");
+        progressDialog.setMessage("Signing In, Please wait...");
         progressDialog.show();
 
         firebaseAuth.signInWithEmailAndPassword(email, pass)
