@@ -24,7 +24,11 @@
         <activity
             android:name=".registerPage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
-        <activity android:name=".signUpPage"
+        <activity
+            android:name=".signUpPage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".req"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
     </application>
 
