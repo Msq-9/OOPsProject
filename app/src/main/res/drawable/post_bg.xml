@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
+
     <item>
         <shape android:shape="rectangle">
-<<<<<<< HEAD
-            <solid android:color="#59d7f4"/>
-            <stroke android:color="#59d7f4" />
-=======
-            <solid android:color="#03d1ba"/>
-            <stroke android:color="#03d1ba" />
->>>>>>> 9b6b2d10a8c2062e963e487705c73f27ca46a0f5
+            <solid android:color="#40ffffff"/>
+            <stroke android:color="#fff" />
             <corners
                 android:radius="10dp"/>
         </shape>

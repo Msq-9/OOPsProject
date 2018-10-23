@@ -24,12 +24,21 @@
         <activity
             android:name=".registerPage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+<<<<<<< HEAD
         <activity android:name=".signUpPage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".profilePage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".userData"/>
 
+=======
+        <activity
+            android:name=".signUpPage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".req"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+>>>>>>> 9b6b2d10a8c2062e963e487705c73f27ca46a0f5
     </application>
 
 </manifest>

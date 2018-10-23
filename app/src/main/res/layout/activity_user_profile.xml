@@ -34,7 +34,11 @@
 
         android:background="@drawable/roundedbutton"
         android:text="@string/submit"
+<<<<<<< HEAD
         android:textColor="#888"
+=======
+        android:textColor="#000"
+>>>>>>> 9b6b2d10a8c2062e963e487705c73f27ca46a0f5
         android:textSize="15sp" />
 
     <LinearLayout

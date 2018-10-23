@@ -6,8 +6,33 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_log_in"
     android:fitsSystemWindows="true"
     tools:context=".homePage">
+<<<<<<< HEAD
+=======
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:id="@+id/homepageRecycler"
+            android:layout_height="match_parent" />
+
+        <Button
+            android:id="@+id/makeRequest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:text="@string/make_a_request" />
+
+
+    </RelativeLayout>
+>>>>>>> 9b6b2d10a8c2062e963e487705c73f27ca46a0f5
 
     <android.support.design.widget.NavigationView
         app:headerLayout="@layout/navigation_header"
