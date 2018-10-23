@@ -1,5 +1,6 @@
 package com.example.msq.oopsproject;
 
+
 public class userData {
 
     public String fName;

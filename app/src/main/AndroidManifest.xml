@@ -26,6 +26,10 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".signUpPage"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".profilePage"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".userData"/>
+
     </application>
 
 </manifest>

@@ -36,15 +36,15 @@ public class registerPage extends AppCompatActivity implements View.OnClickListe
     private String gender;
     private String bloodGrp;
     private Button submit;
-
     private boolean knowCPR = false;
-
 
     private CheckBox CPRCheckbox;
 
     private ProgressDialog progressDialog;
 
     private FirebaseAuth firebaseAuth;
+
+
 
     private boolean isValidEmail(CharSequence target) {
         return (!isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
@@ -163,7 +163,6 @@ public class registerPage extends AppCompatActivity implements View.OnClickListe
         long phNo = Long.parseLong((mobile.getText().toString().trim()));
 
         userData userData = new userData(firstName, lastName, phNo, gender, email, bloodGrp, knowCPR);
-
         progressDialog.setMessage("Registering User, Please wait...");
         progressDialog.show();
 
@@ -190,5 +189,7 @@ public class registerPage extends AppCompatActivity implements View.OnClickListe
             });
 
     }
+
+
 
 }

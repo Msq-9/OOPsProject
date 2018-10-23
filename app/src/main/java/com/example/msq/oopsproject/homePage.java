@@ -28,6 +28,9 @@ public class homePage extends AppCompatActivity {
     private FirebaseUser firebaseUser;
     private DatabaseReference databaseReference;
     private String userID;
+    String fullName;
+    String mail;
+    String mob;
 
     private ImageView header_profilePic;
     private TextView header_name, header_email;
@@ -92,7 +95,11 @@ public class homePage extends AppCompatActivity {
                 }
                 if(item.getItemId() == R.id.nav_account){
                     finish();
-                    startActivity(new Intent(homePage.this, registerPage.class));
+                    Intent myIntent = new Intent(getBaseContext() , profilePage.class);
+                    myIntent.putExtra("name" , fullName);
+                    myIntent.putExtra("email" , mail);
+                    myIntent.putExtra("mobile" , "" + mob);
+                    startActivity(myIntent);
                 }
                 return false;
             }
@@ -109,13 +116,15 @@ public class homePage extends AppCompatActivity {
             uData.setE_mail(ds.child(userID).getValue(userData.class).getE_mail());
             uData.setfName(ds.child(userID).getValue(userData.class).getfName());
             uData.setlName(ds.child(userID).getValue(userData.class).getlName());
-
+            uData.setMobileNum(ds.child(userID).getValue(userData.class).getMobileNum());
             //Toast.makeText(this, uData.getfName() + " " + uData.getlName(), Toast.LENGTH_SHORT).show(); :- works
 
-            String fullName = uData.getfName() + " " + uData.getlName();
+            fullName = uData.getfName() + " " + uData.getlName();
+            mail=uData.getE_mail();
+            mob = "" + uData.getMobileNum();
 
             header_name.setText(fullName);
-            header_email.setText(uData.getE_mail());
+            header_email.setText(mail);
 
         }
 
